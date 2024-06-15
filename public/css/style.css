@@ -5,3 +5,38 @@ body{
     padding: 0;
     margin: 0;
 }
+.container{
+    max-width: 800px;
+    margin: auto;
+}
+.bi{
+    color: #ffd700;
+    font-size: 1.2em;
+}
+nav{
+    background-color: rgb(41, 41, 41);
+}
+nav ul{
+    list-style: none;
+    padding: 1em;
+    margin: 0;
+}
+nav ul li{
+    display: inline;
+    padding: .5em;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #ffd700;
+    font-weight: bold;
+}
+nav ul li a:hover{
+    opacity: .6;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    color: gray;
+}
