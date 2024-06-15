@@ -20,6 +20,9 @@ app.set('view engine', 'handlebars')
 const User = require('./models/User')
 const Tought = require('./models/Tought')
 
+// routes
+const toughtsRoutes = require('./routes/toughtsRoutes')
+
 // session middleware
 app.use(session({
     name: 'session',
@@ -50,14 +53,15 @@ app.use((req, res, next)=>{
     next()
 })
 
-app.get('/', (req, res)=>{
-    res.render('home')
+app.get('/', toughtsRoutes)
+
+app.get('/login', (req, res)=>{
+    res.render('login')
 })
 
-app.get('/sobre', (req, res)=>{
-    res.render('sobre')
+app.get('/register', (req, res)=>{
+    res.render('register')
 })
-
 
 conn
 // .sync({force: true})
