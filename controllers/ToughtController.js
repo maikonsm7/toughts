@@ -1,10 +1,13 @@
 const {raw} = require('mysql2')
 const Tought = require('../models/Tought')
+const User = require('../models/User')
 
 class ToughtController {
     static async showToughts(req, res){
         try {
-            const toughts = await Tought.findAll({raw: true})
+            const toughtsData = await Tought.findAll({include: User}) // traz os dados do usuário junto
+            const toughts = toughtsData.map(tought => tought.get({plain: true})) // pegar somente os valores das duas tabelas juntas
+
             let emptyToughts = false
             if(toughts.length === 0){
                 emptyToughts = true
