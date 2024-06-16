@@ -1,20 +1,36 @@
+:root{
+    --cor-tema: #ffd700;
+}
 *{
     font-family: Helvetica;
-}
-body{
     padding: 0;
     margin: 0;
+    background-color: #222;
+    color: white;
 }
 .container{
     max-width: 800px;
     margin: auto;
 }
+.message{
+    padding: .6em;
+    background-color: #fff3b2;
+    color: #241e00;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 auto 2em;
+    width: 230px;
+    font-size: .9em;
+}
 .bi{
-    color: #ffd700;
+    color: var(--cor-tema);
     font-size: 1.2em;
 }
 nav{
-    background-color: rgb(41, 41, 41);
+    border-bottom: 1px solid var(--cor-tema);
+}
+.navbar{
+    margin-bottom: 1em;
 }
 nav ul{
     list-style: none;
@@ -27,10 +43,60 @@ nav ul li{
 }
 nav ul li a{
     text-decoration: none;
-    color: #ffd700;
+    transition: 0.5s;
+    color: var(--cor-tema);
     font-weight: bold;
 }
 nav ul li a:hover{
+    opacity: .6;
+}
+.auth-container{
+    margin: 0 auto;
+    width: 230px;
+}
+.auth-container h2{
+    margin-bottom: 1em;
+    border-left: 5px solid var(--cor-tema);
+    padding-left: .6em;
+}
+.auth-container p{
+    font-size: .9em;
+    text-align: center;
+    margin-top: 1em;
+}
+.auth-container p a{
+    text-decoration: none;
+    color: var(--cor-tema);
+}
+.form-control{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5em;
+}
+.form-control label{
+    font-weight: bold;
+    margin-top: 3px;
+}
+.form-control input{
+    padding: .8em;
+    margin-top: 3px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+input[type="submit"]{
+    text-decoration: none;
+    padding: .8em;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: var(--cor-tema);
+    transition: 0.5s;
+    color: #222;
+    border: none;
+    cursor: pointer;
+    margin-top: 1em;
+    width: 100%;
+}
+input[type="submit"]:hover{
     opacity: .6;
 }
 footer{
@@ -39,4 +105,6 @@ footer{
     text-align: center;
     width: 100%;
     color: gray;
+    margin-bottom: 1em;
+    font-size: .9em;
 }

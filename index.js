@@ -22,6 +22,10 @@ const Tought = require('./models/Tought')
 
 // routes
 const toughtsRoutes = require('./routes/toughtsRoutes')
+const authRoutes = require('./routes/authRoutes')
+
+// controller apenas para a home
+const ToughtController = require('./controllers/ToughtController')
 
 // session middleware
 app.use(session({
@@ -53,15 +57,10 @@ app.use((req, res, next)=>{
     next()
 })
 
-app.get('/', toughtsRoutes)
+app.use('/tought', toughtsRoutes)
+app.use('/', authRoutes)
+app.get('/', ToughtController.showToughts)
 
-app.get('/login', (req, res)=>{
-    res.render('login')
-})
-
-app.get('/register', (req, res)=>{
-    res.render('register')
-})
 
 conn
 // .sync({force: true})
