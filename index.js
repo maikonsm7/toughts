@@ -57,7 +57,7 @@ app.use((req, res, next)=>{
     next()
 })
 
-app.use('/tought', toughtsRoutes)
+app.use('/toughts', toughtsRoutes)
 app.use('/', authRoutes)
 app.get('/', ToughtController.showToughts)
 

@@ -25,7 +25,7 @@ class AuthController {
 
         req.session.userid = user.id
         req.session.save(() => {
-            res.render('auth/login')
+            res.redirect('/')
         })
 
 

@@ -96,6 +96,15 @@ input[type="submit"]{
     margin-top: 1em;
     width: 100%;
 }
+.title-container a{
+    text-decoration: none;
+    padding: .8em;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: var(--cor-tema);
+    transition: 0.5s;
+    color: #222;
+}
 input[type="submit"]:hover{
     opacity: .6;
 }
