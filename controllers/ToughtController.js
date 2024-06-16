@@ -1,18 +1,28 @@
 const {raw} = require('mysql2')
+const {Op} = require('sequelize') // operador de like (buscar itens com a palavra desejada)
 const Tought = require('../models/Tought')
 const User = require('../models/User')
 
 class ToughtController {
     static async showToughts(req, res){
+        let search = ''
+        let qtdSearch = null
+        if(req.query.search){
+            search = req.query.search
+        }
         try {
-            const toughtsData = await Tought.findAll({include: User}) // traz os dados do usuário junto
+            const toughtsData = await Tought.findAll({include: User, where: {title: {[Op.like]: `%${search}%`}}}) // traz os dados do usuário junto, se tiver algo na pesquisa, ele busca só os itens filtrados
             const toughts = toughtsData.map(tought => tought.get({plain: true})) // pegar somente os valores das duas tabelas juntas
-
+    
             let emptyToughts = false
             if(toughts.length === 0){
                 emptyToughts = true
+            }else{
+                if(search !== ''){
+                    qtdSearch = toughts.length
+                }
             }
-            res.render('toughts/all', {toughts, emptyToughts})
+            res.render('toughts/all', {toughts, emptyToughts, qtdSearch})
         } catch (error) {
             console.error('Erro: ', error)
         }
@@ -51,6 +61,7 @@ class ToughtController {
     static async removeTought(req, res){
         const id = req.params.id
         const UserId = req.session.userid
+        
         try{
             await Tought.destroy({where: {id, UserId}})
             req.flash('message', 'Pensamento removido!')

@@ -1,4 +1,15 @@
+<div class="title-container">
 <h2>Todos os pensamentos</h2>
+<form action="/" method="get">
+<input type="text" name="search" class="search" placeholder="Pesquisar...">
+<input type="submit" class="btn" value="Buscar">
+</form>
+</div>
+
+{{#if qtdSearch}}
+<p class="qtd-search"><span>{{qtdSearch}}</span> resultados</p>
+{{/if}}
+
 <div class="toughts">
 {{#each toughts}}
 <ul>

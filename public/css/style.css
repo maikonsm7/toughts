@@ -104,6 +104,11 @@
     border: 1px solid white;
     border-radius: 5px;
 }
+.search{
+    padding: .8em;
+    border: 1px solid white;
+    border-radius: 5px;
+}
 .title-container{
     display: flex;
     justify-content: space-between;
@@ -164,6 +169,13 @@
     color: gray;
     text-align: center;
     padding: 1em;
+}
+.qtd-search{
+    text-align: center;
+    padding: 1em;
+}
+.qtd-search span{
+    color: var(--cor-tema);
 }
 footer{
     position: relative;
