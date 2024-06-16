@@ -1,56 +1,69 @@
 :root{
     --cor-tema: #ffd700;
+    --cor-bg: #222;
 }
 *{
     font-family: Helvetica;
     padding: 0;
     margin: 0;
-    background-color: #222;
+    background-color: var(--cor-bg);
     color: white;
 }
 .container{
     max-width: 800px;
     margin: auto;
+    padding: 1em;
 }
 .message{
     padding: .6em;
     background-color: #fff3b2;
-    color: #241e00;
+    color: var(--cor-bg);
     border-radius: 5px;
     text-align: center;
     margin: 0 auto 2em;
     width: 230px;
     font-size: .9em;
 }
-.bi{
-    color: var(--cor-tema);
-    font-size: 1.2em;
-}
-nav{
-    border-bottom: 1px solid var(--cor-tema);
-}
+/* desaparecer a mensagem depois de 3 segundos */
+/* .hide {
+    animation: hideAnimation 4s forwards;
+  }
+  
+  @keyframes hideAnimation {
+    to {
+      visibility: hidden;
+    }
+  }
+   */
 .navbar{
+    border-bottom: 1px solid var(--cor-tema);
     margin-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+    padding: .7em;
 }
-nav ul{
+.navbar img{
+    width: 30px;
+    height: 30px;
+}
+.navbar ul{
     list-style: none;
-    padding: 1em;
     margin: 0;
 }
-nav ul li{
+.navbar ul li{
     display: inline;
     padding: .5em;
 }
-nav ul li a{
+.navbar ul li a{
     text-decoration: none;
     transition: 0.5s;
     color: var(--cor-tema);
     font-weight: bold;
 }
-nav ul li a:hover{
+.navbar ul li a:hover{
     opacity: .6;
 }
-.auth-container{
+.auth-container, .tought-container{
     margin: 0 auto;
     width: 230px;
 }
@@ -59,14 +72,22 @@ nav ul li a:hover{
     border-left: 5px solid var(--cor-tema);
     padding-left: .6em;
 }
+.tought-container h2{
+    margin-bottom: 1em;
+    text-align: center;
+}
+.tought-container p{
+    margin-top: 1em;
+    text-align: center;
+}
+.link{
+    text-decoration: none;
+    color: var(--cor-tema);
+}
 .auth-container p{
     font-size: .9em;
     text-align: center;
     margin-top: 1em;
-}
-.auth-container p a{
-    text-decoration: none;
-    color: var(--cor-tema);
 }
 .form-control{
     display: flex;
@@ -83,37 +104,69 @@ nav ul li a:hover{
     border: 1px solid white;
     border-radius: 5px;
 }
-input[type="submit"]{
+.title-container{
+    display: flex;
+    justify-content: space-between;
+}
+.btn{
     text-decoration: none;
     padding: .8em;
     font-weight: bold;
     border-radius: 5px;
     background-color: var(--cor-tema);
-    transition: 0.5s;
-    color: #222;
+    transition: 0.3s;
+    color: var(--cor-bg);
     border: none;
     cursor: pointer;
-    margin-top: 1em;
-    width: 100%;
 }
-.title-container a{
-    text-decoration: none;
-    padding: .8em;
-    font-weight: bold;
-    border-radius: 5px;
-    background-color: var(--cor-tema);
-    transition: 0.5s;
-    color: #222;
+.btn-secondary{
+    background-color: var(--cor-bg);
+    color: var(--cor-tema);
+    border: 1px solid var(--cor-tema);
 }
-input[type="submit"]:hover{
+.btn-actions{
+    padding: .5em;
+    font-size: .7em;
+    margin-left: 1em;
+}
+.btn:hover{
     opacity: .6;
 }
+.btn-secondary:hover{
+    background-color: var(--cor-tema);
+    color: var(--cor-bg);
+    opacity: 1;
+}
+.dashboard, .toughts{
+    margin-top: 1em;
+}
+.dashboard ul, .toughts ul{
+    list-style: none;
+}
+.toughts ul li{
+    padding-left: 1em;
+    border-left: 3px solid rgb(75, 75, 75);
+    margin-top: 1em;
+}
+.autor{
+    font-size: .8em;
+    color: var(--cor-tema);
+    font-style: italic;
+}
+.dashboard ul li{
+    padding: 1em;
+    border-bottom: 1px solid rgb(75, 75, 75);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 footer{
-    position: absolute;
+    position: relative;
     bottom: 0;
     text-align: center;
     width: 100%;
     color: gray;
+    margin-top: 1em;
     margin-bottom: 1em;
     font-size: .9em;
 }

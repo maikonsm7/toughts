@@ -2,4 +2,17 @@
 <h2>Dashboard</h2>
 <a href="/toughts/add" class="btn">Criar Pensamento</a>
 </div>
-<h3>Seus Pensamentos</h3>
+
+<div class="dashboard">
+{{#each toughts}}
+<ul>
+    <li>
+        <span class="label">{{this.title}}</span>
+        <span class="actions">
+            <a href="/toughts/edit/{{this.id}}" class="btn btn-secondary btn-actions">Editar</a>
+            <a href="/toughts/remove/{{this.id}}" class="btn btn-secondary btn-actions">Remover</a>
+        </span>
+    </li>
+</ul>
+{{/each}}
+</div>

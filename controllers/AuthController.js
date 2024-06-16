@@ -1,4 +1,4 @@
-const { raw } = require('mysql2')
+// const { raw } = require('mysql2')
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 
@@ -66,7 +66,7 @@ class AuthController {
             // initialize session
             req.session.userid = createdUser.id
 
-            req.flash('message', 'Cadastro realizado com sucesso!')
+            req.flash('message', 'Cadastro realizado!')
 
             req.session.save(() => {
                 res.redirect('/')
