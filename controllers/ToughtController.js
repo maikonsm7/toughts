@@ -6,21 +6,25 @@ const User = require('../models/User')
 class ToughtController {
     static async showToughts(req, res){
         let search = ''
-        let qtdSearch = null
+        let qtdSearch = ''
+        const dateFormat = tought => {
+            let dataObjeto = new Date(tought.createdAt)
+            tought.createdAt = `${dataObjeto.getDate()}/${dataObjeto.getMonth()}/${dataObjeto.getFullYear()}`
+            return tought
+        }
         if(req.query.search){
             search = req.query.search
         }
         try {
             const toughtsData = await Tought.findAll({include: User, where: {title: {[Op.like]: `%${search}%`}}}) // traz os dados do usuário junto, se tiver algo na pesquisa, ele busca só os itens filtrados
-            const toughts = toughtsData.map(tought => tought.get({plain: true})) // pegar somente os valores das duas tabelas juntas
+            const toughtsUser = toughtsData.map(tought => tought.get({plain: true})) // pegar somente os valores das duas tabelas juntas
+            const toughts = toughtsUser.map(dateFormat) // pegar somente os valores das duas tabelas juntas
     
-            let emptyToughts = false
-            if(toughts.length === 0){
+            let emptyToughts = false    
+            if(toughts.length === 0 && search === ''){
                 emptyToughts = true
-            }else{
-                if(search !== ''){
-                    qtdSearch = toughts.length
-                }
+            }else if(toughts.length >= 0 && search !== ''){
+                qtdSearch = `${toughts.length} ${toughts.length > 1 ? 'resultados' : 'resultado'}`
             }
             res.render('toughts/all', {toughts, emptyToughts, qtdSearch})
         } catch (error) {

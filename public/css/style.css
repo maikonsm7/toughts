@@ -153,10 +153,15 @@
     border-left: 3px solid rgb(75, 75, 75);
     margin-top: 1em;
 }
-.autor{
+.details{
     font-size: .8em;
-    color: var(--cor-tema);
     font-style: italic;
+}
+.details .autor{
+    color: var(--cor-tema);
+}
+.details .date{
+    color: gray;
 }
 .dashboard ul li{
     padding: 1em;
@@ -173,12 +178,10 @@
 .qtd-search{
     text-align: center;
     padding: 1em;
-}
-.qtd-search span{
     color: var(--cor-tema);
 }
 footer{
-    position: relative;
+    position: absolute;
     bottom: 0;
     text-align: center;
     width: 100%;
