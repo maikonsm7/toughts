@@ -11,8 +11,9 @@ class ToughtController {
         }
     }
     static async dashboard(req, res){
+        const UserId = req.session.userid
         try {
-            const toughts = await Tought.findAll({raw: true, where: {UserId: req.session.userid}})
+            const toughts = await Tought.findAll({raw: true, where: {UserId}})
             res.render('toughts/dashboard', {toughts})
         } catch (error) {
             console.error('Erro: ', error)
@@ -38,8 +39,9 @@ class ToughtController {
     }
     static async removeTought(req, res){
         const id = req.params.id
+        const UserId = req.session.userid
         try{
-            await Tought.destroy({where: {id, UserId: req.session.userid}})
+            await Tought.destroy({where: {id, UserId}})
             req.flash('message', 'Pensamento removido!')
             req.session.save(()=>{
                 res.redirect('/toughts/dashboard')
@@ -50,8 +52,9 @@ class ToughtController {
     }
     static async updateTought(req, res){
         const id = req.params.id
+        const UserId = req.session.userid
         try {
-            const tought = await Tought.findOne({raw: true, where: {id, UserId: req.session.userid}})
+            const tought = await Tought.findOne({raw: true, where: {id, UserId}})
             res.render('toughts/edit', {tought})
         } catch (error) {
             console.error('Erro: ', error)
@@ -59,11 +62,12 @@ class ToughtController {
     }
     static async updateToughtSave(req, res){
         const id = req.body.id
+        const UserId = req.session.userid
         const tought = {
             title: req.body.title
         }
         try {
-            await Tought.update(tought, {where: {id, UserId: req.session.userid}})
+            await Tought.update(tought, {where: {id, UserId}})
             req.flash('message', 'Pensamento atualizado!')
             req.session.save(()=>{
                 res.redirect('/toughts/dashboard')
