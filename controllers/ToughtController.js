@@ -5,7 +5,11 @@ class ToughtController {
     static async showToughts(req, res){
         try {
             const toughts = await Tought.findAll({raw: true})
-            res.render('toughts/all', {toughts})
+            let emptyToughts = false
+            if(toughts.length === 0){
+                emptyToughts = true
+            }
+            res.render('toughts/all', {toughts, emptyToughts})
         } catch (error) {
             console.error('Erro: ', error)
         }
@@ -14,7 +18,11 @@ class ToughtController {
         const UserId = req.session.userid
         try {
             const toughts = await Tought.findAll({raw: true, where: {UserId}})
-            res.render('toughts/dashboard', {toughts})
+            let emptyToughts = false
+            if(toughts.length === 0){
+                emptyToughts = true
+            }
+            res.render('toughts/dashboard', {toughts, emptyToughts})
         } catch (error) {
             console.error('Erro: ', error)
         }

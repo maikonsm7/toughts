@@ -160,6 +160,11 @@
     align-items: center;
     justify-content: space-between;
 }
+.empty-toughts{
+    color: gray;
+    text-align: center;
+    padding: 1em;
+}
 footer{
     position: relative;
     bottom: 0;
